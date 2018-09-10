@@ -15,7 +15,7 @@ e8638f3e907f        quay.io/coreos/flannel:v0.10.0-amd64   "/opt/bin/flanneld -â
 
 * Start a net container, invoke the flannel CNI plugin, and attach an application container
 ```
-root@flannel-01:~# /vagrant/start_flannel_container.sh flanneltest
+root@flannel-01:~# /scripts/start_flannel_container.sh flanneltest
 ##########
 # container name: flanneltest
 # net container name: flanneltest_net
@@ -43,7 +43,7 @@ e73e73a7dd6a8f98751b8c5fabff55a40897de6ba19430f4653f231f8d16d731
 
 * Clean up the container and network, invoking the CNI delete action
 ```
-root@flannel-01:~# /vagrant/remove_flannel_container.sh flanneltest
+root@flannel-01:~# /scripts/remove_flannel_container.sh flanneltest
 ##########
 # container name: flanneltest
 # net container name: flanneltest_net

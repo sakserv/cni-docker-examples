@@ -17,7 +17,7 @@ d8d8fcf9343e        weaveworks/weavedb:latest    "data-only"              6 minu
 
 * Start a net container, invoke the weave CNI plugin, and attach an application container
 ```
-root@weave-01:~# /vagrant/start_weave_container.sh weavetest
+root@weave-01:~# /scripts/start_weave_container.sh weavetest
 ##########
 # container name: weavetest
 # net container name: weavetest_net
@@ -37,7 +37,7 @@ root@weave-01:~# /vagrant/start_weave_container.sh weavetest
 
 * Clean up the container and network, invoking the CNI delete action
 ```
-root@weave-01:~# /vagrant/remove_weave_container.sh weavetest
+root@weave-01:~# /scripts/remove_weave_container.sh weavetest
 ##########
 # container name: weavetest
 # net container name: weavetest_net
