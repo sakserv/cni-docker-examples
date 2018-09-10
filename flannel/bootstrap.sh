@@ -57,7 +57,7 @@ EOF
 #
 # Install the flannel plugins
 #
-mkdir /opt/cni/bin
+mkdir -p /opt/cni/bin
 wget $cni_plugin_url -O /tmp/cni-plugins.tgz
 cd /tmp && tar -xzvf /tmp/cni-plugins.tgz -C /opt/cni/bin ./flannel
 cd /tmp && tar -xzvf /tmp/cni-plugins.tgz -C /opt/cni/bin ./host-local
@@ -79,7 +79,7 @@ fi
 # Copy scripts
 #
 echo "## Copying testing scripts"
-mkdir /scripts
+mkdir -p /scripts
 cp /vagrant/*.sh /scripts
 chmod -R 755 /scripts
 

@@ -15,7 +15,7 @@ CONTAINER ID        IMAGE                              COMMAND             CREAT
 
 * Start a net container, invoke the calico CNI plugin, and attach an application container
 ```
-root@calico-01:~# /vagrant/start_calico_container.sh calicotest
+root@calico-01:~# /scripts/start_calico_container.sh calicotest
 ##########
 # container name: calicotest
 # net container name: calicotest_net
@@ -35,7 +35,7 @@ root@calico-01:~# /vagrant/start_calico_container.sh calicotest
 
 * Clean up the container and network, invoking the CNI delete action
 ```
-root@calico-01:~# /vagrant/remove_calico_container.sh calicotest
+root@calico-01:~# /scripts/remove_calico_container.sh calicotest
 ##########
 # container name: calicotest
 # net container name: calicotest_net

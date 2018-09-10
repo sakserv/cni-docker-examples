@@ -47,7 +47,7 @@ fi
 # Copy scripts
 #
 echo "## Copying testing scripts"
-mkdir /scripts
+mkdir -p /scripts
 cp /vagrant/*.sh /scripts
 chmod -R 755 /scripts
 

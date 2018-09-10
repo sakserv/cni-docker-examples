@@ -22,7 +22,7 @@ echo "## Removing container ${CONTAINER_NAME} attached to net container ${CONTAI
 docker stop $CONTAINER_NAME && docker rm $CONTAINER_NAME
 
 # Call delete on the CNI plugin
-cni_log="/tmp/cni.flannel.stop.eth10.${CONTAINER_NAME}"
+cni_log="/tmp/cni.flannel.remove.eth10.${CONTAINER_NAME}"
 echo "## Calling delete action on the flannel CNI plugin (logging stderr to $cni_log)"
 CNI_COMMAND=DEL CNI_CONTAINERID=${CONTAINER_NAME} CNI_NETNS=$(docker inspect --format '{{.NetworkSettings.SandboxKey}}' ${CONTAINER_NAME}_net) CNI_IFNAME=eth10 CNI_PATH=/opt/cni/bin /opt/cni/bin/flannel 2>>$cni_log </etc/cni/net.d/10-flannel.conf || exit 1
 

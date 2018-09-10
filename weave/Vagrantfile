@@ -11,6 +11,9 @@ instance_name_prefix="weave"
 primary_ip = "172.17.10.101"
 
 Vagrant.configure(2) do |config|
+  # Sync the common scripts
+  config.vm.synced_folder "../common", "/scripts/common"
+
   # always use Vagrants insecure key
   config.ssh.insert_key = true
   config.ssh.username = "vagrant"
@@ -31,7 +34,7 @@ Vagrant.configure(2) do |config|
     config.vm.define vm_name do |host|
       host.vm.hostname = vm_name
 
-      ip = "172.17.8.#{i+100}"
+      ip = "172.17.10.#{i+100}"
       host.vm.network :private_network, ip: ip
 
       # Fix stdin: is not a tty error (http://foo-o-rama.com/vagrant--stdin-is-not-a-tty--fix.html)
@@ -42,7 +45,7 @@ Vagrant.configure(2) do |config|
 
       # The docker provisioner installs docker.
       host.vm.provision :docker, images: [
-          "busybox:latest",
+          "alpine:latest",
           "gcr.io/google_containers/pause"
       ]
 
