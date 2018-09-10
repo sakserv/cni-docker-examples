@@ -75,10 +75,10 @@ EOF
 # Install the CNI calico plugins
 #
 echo "## Installing the calico CNI plugins"
-mkdir /opt/cni
-wget https://github.com/projectcalico/cni-plugin/releases/download/v3.2.0/calico -O /opt/cni/calico
-wget https://github.com/projectcalico/cni-plugin/releases/download/v3.2.0/calico-ipam -O /opt/cni/calico-ipam
-chmod 755 /opt/cni/calico*
+mkdir -p /opt/cni/bin
+wget https://github.com/projectcalico/cni-plugin/releases/download/v3.2.0/calico -O /opt/cni/bin/calico
+wget https://github.com/projectcalico/cni-plugin/releases/download/v3.2.0/calico-ipam -O /opt/cni/bin/calico-ipam
+chmod 755 /opt/cni/bin/calico*
 
 #
 # Copy scripts

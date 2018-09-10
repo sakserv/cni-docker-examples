@@ -22,8 +22,9 @@ echo "## Launching the net container"
 docker run -d --net=none --name=${CONTAINER_NAME}_net gcr.io/google_containers/pause || exit 1
 
 # Configure the netns
-echo "## Calling flannel CNI plugin (logging stderr to /tmp/cni.${CONTAINER_NAME})"
-CNI_COMMAND=ADD CNI_CONTAINERID=${CONTAINER_NAME} CNI_NETNS=$(docker inspect --format '{{.NetworkSettings.SandboxKey}}' ${CONTAINER_NAME}_net) CNI_IFNAME=eth10 CNI_PATH=/opt/cni /opt/cni/flannel 2>>/tmp/cni.${CONTAINER_NAME} </etc/cni/net.d/11-flannel.conf || exit 1
+cni_log="/tmp/cni.flannel.start.eth10.${CONTAINER_NAME}"
+echo "## Calling flannel CNI plugin (logging stderr to $cni_log)"
+CNI_COMMAND=ADD CNI_CONTAINERID=${CONTAINER_NAME} CNI_NETNS=$(docker inspect --format '{{.NetworkSettings.SandboxKey}}' ${CONTAINER_NAME}_net) CNI_IFNAME=eth10 CNI_PATH=/opt/cni/bin /opt/cni/bin/flannel 2>>$cni_log </etc/cni/net.d/10-flannel.conf || exit 1
 
 # Launch the app container
 echo "## Starting container ${CONTAINER_NAME} attached to net container ${CONTAINER_NAME}_net"

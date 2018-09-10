@@ -5,10 +5,10 @@
 num_instances=2
 
 # Change basename of the VM
-instance_name_prefix="flannel"
+instance_name_prefix="weave"
 
 # The IP address of the first server
-primary_ip = "172.17.9.101"
+primary_ip = "172.17.10.101"
 
 Vagrant.configure(2) do |config|
   # always use Vagrants insecure key
@@ -43,8 +43,7 @@ Vagrant.configure(2) do |config|
       # The docker provisioner installs docker.
       host.vm.provision :docker, images: [
           "busybox:latest",
-          "gcr.io/google_containers/pause",
-          "quay.io/coreos/flannel:v0.10.0-amd64"
+          "gcr.io/google_containers/pause"
       ]
 
       # Setup the node

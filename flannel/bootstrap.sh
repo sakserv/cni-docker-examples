@@ -47,7 +47,7 @@ echo 'export ETCD_ENDPOINTS="http://'${primary_ip}':2379"' >> /etc/profile
 #
 echo "## Configuring CNI for flannel"
 mkdir -p /etc/cni/net.d
-cat > /etc/cni/net.d/11-flannel.conf << EOF
+cat > /etc/cni/net.d/10-flannel.conf << EOF
 {
 	"name": "flannelnet",
 	"type": "flannel"
@@ -57,11 +57,11 @@ EOF
 #
 # Install the flannel plugins
 #
-mkdir /opt/cni
+mkdir /opt/cni/bin
 wget $cni_plugin_url -O /tmp/cni-plugins.tgz
-cd /tmp && tar -xzvf /tmp/cni-plugins.tgz -C /opt/cni ./flannel
-cd /tmp && tar -xzvf /tmp/cni-plugins.tgz -C /opt/cni ./host-local
-cd /tmp && tar -xzvf /tmp/cni-plugins.tgz -C /opt/cni ./bridge
+cd /tmp && tar -xzvf /tmp/cni-plugins.tgz -C /opt/cni/bin ./flannel
+cd /tmp && tar -xzvf /tmp/cni-plugins.tgz -C /opt/cni/bin ./host-local
+cd /tmp && tar -xzvf /tmp/cni-plugins.tgz -C /opt/cni/bin ./bridge
 
 #
 # Start flannel
